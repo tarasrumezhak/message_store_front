@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Dashboard from "./Dashboard";
+import SignUp from "./signup";
+import SignIn from "./signin";
+import Checkout from "./checkout";
+import SignInSide from "./signinside";
+import { BrowserRouter as Router} from "react-router-dom";
+import Main from "./main";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+     <Router>
+         <Main/>
+     </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
