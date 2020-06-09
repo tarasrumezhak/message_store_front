@@ -81,7 +81,7 @@ export default function SignUpSide() {
             password: password
         };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://db-flask-app.herokuapp.com/users", {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'

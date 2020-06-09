@@ -26,7 +26,8 @@ import {useRouteMatch} from "react-router";
 import Checkout from "./checkout";
 import Album from "./album";
 import Admin from "./admin";
-import TestForm from "./query_forms/test";
+import Query1Form from "./query_forms/query1";
+import OrdersAll from "./orders_all";
 
 
 const drawerWidth = 240;
@@ -140,8 +141,8 @@ export default function Dashboard() {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         Message Store
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
+                    <IconButton color="inherit" href="https://www.linkedin.com/in/trumezhak/">
+                        <Badge color="secondary">
                             <NotificationsIcon />
                         </Badge>
                     </IconButton>
@@ -184,10 +185,11 @@ export default function Dashboard() {
                         <Grid item xs={12}>
                             {/*<Paper className={classes.paper}>*/}
                                 <Switch>
-                                    <Route path={`${match.path}/orders`} component={Orders} />
+                                    <Route exact path={`${match.path}/orders/all`} component={OrdersAll} />
+                                    <Route exact path={`${match.path}/orders`} component={Orders} />
                                     <Route path={`${match.path}/order`} component={Checkout} />
                                     <Route path={`${match.path}/authors`} component={Album} />
-                                    <Route path={`${match.path}/admin/test`} component={TestForm} />
+                                    <Route path={`${match.path}/admin/query1`} component={Query1Form} />
                                     <Route path={`${match.path}/admin`} component={Admin} />
                                 </Switch>
                                 {/*<Orders/>*/}

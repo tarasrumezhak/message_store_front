@@ -15,7 +15,7 @@ export default function AddressForm() {
             service: service,
             message: message
         };
-        fetch("http://localhost:5000/order", {
+        fetch("https://db-flask-app.herokuapp.com/order", {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'

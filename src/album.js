@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -48,10 +48,29 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
     const classes = useStyles();
+    const [authors, setAuthors] = useState([]);
+
+    useEffect(() => {
+        fetch("https://db-flask-app.herokuapp.com/authors")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setAuthors(result);
+                    console.log(result);
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    // setIsLoaded(true);
+                    // setError(error);
+                }
+            )
+    });
 
     return (
         <React.Fragment>
@@ -86,6 +105,13 @@ export default function Album() {
                         <Grid item xs={12} sm={6} md={4}>
                             <AuthorCard image='https://www.iboo.com/Content/Images/uploaded/Homepage/Authors/Author%20680%20x%20300.jpg' name="Danylo Nazaruk" description="Cool author"/>
                         </Grid>
+                        {authors.map((row) => (
+                            <Grid item xs={12} sm={6} md={4}>
+                                <AuthorCard image={row.last_name === "Trantow" ? "https://sun9-58.userapi.com/S4W_L31ydBIX-_gZzOkiWbV35ukRfqi1P9UKAg/w61MBC0sZ7g.jpg" :
+                                    'https://thumbs.dreamstime.com/t/author-word-vintage-wood-type-letterpress-against-grained-106157292.jpg'}
+                                            name={row.first_name + " " + row.last_name} description="Registered author"/>
+                            </Grid>
+                        ))}
 
                                 {/*<Card className={classes.card}>*/}
                                 {/*    <CardMedia*/}

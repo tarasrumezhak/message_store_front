@@ -26,8 +26,11 @@ export default function Admin() {
                 aria-label="vertical contained primary button group"
                 variant="text"
             >
-                <Button>для автора A знайти усiх покупцiв, якi замовляли у нього повiдомлення хоча б N разiв за
-                    вказаний перiод (з дати F по дату T)</Button>
+                <Link to='admin/query1'>
+                    <Button >для автора A знайти усiх покупцiв, якi замовляли у нього повiдомлення хоча б N разiв за
+                        вказаний перiод (з дати F по дату T)
+                    </Button>
+                </Link>
                 <Button>для покупця С знайти усiх авторiв, у яких вiн замовляв повiдомлення чи статтi за вказаний
                     перiод (з дати F по дату T)</Button>
                 <Button>знайти усiх авторiв, якi отримували замовлення вiд щонайменше N рiзних покупцiв за

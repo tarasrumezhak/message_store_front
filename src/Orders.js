@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
+import {Link} from 'react-router-dom';
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -43,7 +43,7 @@ export default function Orders() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/order")
+        fetch("https://db-flask-app.herokuapp.com/order")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -92,7 +92,7 @@ export default function Orders() {
                     </TableBody>
                 </Table>
                 <div className={classes.seeMore}>
-                    <Link color="primary" href="#" onClick={preventDefault}>
+                    <Link to="orders/all">
                         See more orders
                     </Link>
                 </div>
